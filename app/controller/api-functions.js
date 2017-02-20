@@ -1,9 +1,10 @@
 let request = require('request');
+let strftime = require('strftime');
 let Bing = require('node-bing-api')({accKey : 'c2ba2590831b4bcfbbfeadcf6a11ea6c'});
 
 exports.handleSearchQuery = function(req,res){
 	let search_term = req.params.searchterm;
-	let time_stamp = req.time;
+	let time_stamp = strftime('%D %T',req.time);	
 	let offset = req.query.offset >= 1 ? req.query.offset : 0;
 	let limit = 10;
 	let results = [];

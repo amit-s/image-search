@@ -15,6 +15,7 @@
     "mongodb": "^2.2.24",
     "node-bing-api": "^3.2.1",
     "pug": "^2.0.0-beta11",
+    "strftime": "^0.10.0",
     "util": "^0.10.3"
   }
 }

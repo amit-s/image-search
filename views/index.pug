@@ -2,7 +2,56 @@ doctype html
 html(lang="en")
 	head
 		title Image Search API
-		link(type="text/css/" rel="stylesheet" href="./public/styles/style.css")
+		link(rel="stylesheet" type="text/css/" href="./public/styles/style.css")
+		link(rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css")
 
 	body
-		h1 Image Search Abstraction Layer
+		.container
+			h1 API Basejump : Image Search Abstraction Layer
+
+			h3 User Stories:
+			ol
+				li I can get the image URLs, alt text and page urls for a set of images relating to a given search string.
+				li I can paginate through the responses by adding a ?offset=2 parameter to the URL.
+				li I can get a list of the most recently submitted search strings.
+
+			h3 Example query usage:
+
+			code https://img-sal.herokuapp.com/lolcats%20funny?offset=10
+			br
+			code https://img-sal.herokuapp.com/latest
+
+			h3 Example search query output:
+
+			code.
+				[{
+					"url": "http://data.whicdn.com/images/34129178/large.jpg",
+					"snippet": "this image include: funny",
+					"thumbnail": "https://encrypted-tbn1.gstatic.com/images?q=tbn:ANd9GcQ9wRI3mrK8iXg7mcSZx8yfpwlR2W7dCXA3lGHvQ28SnKGsvGYt6eIflAIq",
+					"context": "http://weheartit.com/entry/group/4233028"
+					}, {
+					"url": "https://s-media-cache-ak0.pinimg.com/736x/bc/32/f3/bc32f3896ebe6cfc48d489f5e7674d7a.jpg",
+					"snippet": "#lolcats funny cats:",
+					"thumbnail": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQBhYqlh_TWw8ycQeSpt9MwPJLIbL7X9dFCjPpEmSyaIpMQlI-AXN75EUo",
+					"context": "https://www.pinterest.com/pin/51298883228847846/"
+				}]
+
+			h3 Example latest query output:
+
+			code.
+				[{
+				"term": "lolcats funny",
+				"when": "2016-01-23T04:21:19.441Z"
+				}, {
+				"term": "lolcats funny",
+				"when": "2016-01-23T04:20:26.237Z"
+				}, {
+				"term": "lolcats funny",
+				"when": "2016-01-23T02:06:32.898Z"
+				}, {
+				"term": "lolcats sad",
+				"when": "2016-01-23T01:29:55.894Z"
+				}, {
+				"term": "lolcats funny",
+				"when": "2016-01-23T01:29:45.727Z"
+				}]

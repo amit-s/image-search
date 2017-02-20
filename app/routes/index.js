@@ -7,4 +7,10 @@ module.exports = function(app){
 	});
 
 	app.use('/api', apiRouter);
+
+	app.use(function(req,res){		
+		if(!res.headersSent){
+			res.json({error: "Invalid URL"});
+		}		
+	});
 }
